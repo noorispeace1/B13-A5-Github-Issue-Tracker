@@ -20,8 +20,7 @@
    - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
 
 
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
-
+###  **Search Issue:** 
    - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
 
 

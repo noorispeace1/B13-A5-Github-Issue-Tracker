@@ -6,6 +6,7 @@
     <title>GitHub Issue Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body id="main-body" class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
@@ -40,7 +41,7 @@
         </button>
         </div>
     </div>
-                 
+       
     <section id="dashboard-container" class="hidden w-full absolute top-0 left-0">
         <div class="navbar bg-white shadow-md px-6 py-4 w-full">
             <div class="navbar-start">
@@ -51,10 +52,10 @@
             </div>
             <div class="navbar-end gap-3">
                 <div class="hidden md:block">
-                    <input type="text" placeholder="Search issues..." class="input input-bordered w-full max-w-xs" />
+                    <input type="text" id="btn-search" placeholder="Search issues..." class="input input-bordered w-full max-w-xs" />
                 </div>
-                <button class="btn bg-purple-600 text-white hover:bg-purple-700 border-none px-6">
-                    + New Issue
+                <button onclick="searchValues()" class="btn bg-purple-600 text-white hover:bg-purple-700 border-none px-6">
+                    Search Issue
                 </button>
                
             </div>
@@ -69,10 +70,25 @@
 
 <!-- card -->
 <div class="max-w-7xl mx-auto p-6">
-    <div class="flex gap-2 mb-6">
-        <button class="btn bg-indigo-600 text-white hover:bg-indigo-700 border-none px-8 rounded-lg">All</button>
-        <button class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">Open</button>
-        <button class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">Closed</button>
+ <button onclick="toggleBtn('allBtn'); CardLoad()" 
+id="allBtn"
+class="btn bg-indigo-600 text-white hover:bg-indigo-700 border-none px-8 rounded-lg">
+All
+</button>
+
+<button onclick="toggleBtn('openBtn'); openCardLoad('open')" 
+id="openBtn"
+class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">
+Open
+</button>
+
+<button onclick="toggleBtn('closeBtn'); openCardLoad('closed')" 
+id="closeBtn"
+class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">
+Closed
+</button>
+
+    
     </div>
 
     <div class="border border-gray-200 rounded-2xl bg-white p-6 shadow-sm">
@@ -82,50 +98,24 @@
                     <img src="./assets/Aperture.png" class="w-6 h-6" alt="">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-800">50 Issues</h1>
+                    <h1 class="text-2xl font-bold text-gray-800"><span id="issues-no">50</span> Issues</h1>
                     <p class="text-sm text-gray-400">Track and manage your project issues</p>
                 </div>
             </div>
             <div class="flex gap-4">
                 <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-gray-600">Open</span>
+                    <span  class= "text-sm font-medium text-gray-600">Open</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 bg-purple-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-gray-600">Closed</span>
+                    <span  class="text-sm font-medium text-gray-600">Closed</span>
                 </div>
             </div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="">
-            <div class="border border-gray-100 rounded-xl p-5 bg-white hover:shadow-md transition-shadow">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="w-6 h-6 rounded-full border-2 border-dashed border-green-400 flex items-center justify-center">
-                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                    </div>
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-red-500 bg-red-50 px-2 py-0.5 rounded">High</span>
-                </div>
-
-                <h3 class="text-gray-800 font-bold leading-tight mb-2">Fix Navigation Menu On Mobile Devices</h3>
-                <p class="text-xs text-gray-500 line-clamp-2 mb-4">The navigation menu doesn't collapse properly on mobile devices...</p>
-
-                <div class="flex gap-2 mb-6">
-                    <span class="flex items-center gap-1 text-[10px] font-bold text-red-400 bg-red-50 px-2 py-1 rounded">
-                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span> BUG
-                    </span>
-                    <span class="flex items-center gap-1 text-[10px] font-bold text-orange-400 bg-orange-50 px-2 py-1 rounded">
-                        <span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span> HELP WANTED
-                    </span>
-                </div>
-
-                <div class="pt-4 border-t border-gray-50">
-                    <p class="text-[11px] text-gray-400 font-medium">#1 by john_doe</p>
-                    <p class="text-[11px] text-gray-400">1/15/2024</p>
-                </div>
-            </div>
-            </div>
-    </div>
+<!-- card parents -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="allContainer">
+           
 </div>
 
 
