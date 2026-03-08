@@ -1,138 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issue Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Issue Tracker</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 
-<body id="main-body" class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+<body class="bg bg-gray-100">
 
-    <div id="login-container" class="p-8 rounded-xl shadow-lg w-full max-w-sm bg-white border border-gray-100">
-        <div class="flex justify-center mb-6">
-            <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center overflow-hidden">
-                <img src="./assets/github-logo.png" alt="Logo" class="w-10 h-10 invert">
-            </div>
-        </div>
-        <h2 class="text-2xl font-bold text-center text-gray-800">GitHub Issue Tracker</h2>
-        <p class="text-center text-gray-500 mb-6">Sign in to manage your issues</p>
-
-        <div class="space-y-4 mt-6">
-            <div>
-                <p class="text-sm text-gray-500 mb-1">Username:</p>
-                <input type="text" id="username" placeholder="admin" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
-            </div>
-            <div>
-                <p class="text-sm text-gray-500 mb-1">Password:</p>
-                <input type="password" id="password" placeholder="admin123" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
-            </div>
-            <button id="login-btn" class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
-                Sign In
-            </button>
-              <div class="my-6 flex items-center justify-center">
-            <span class="text-gray-400 text-sm">OR</span>
-        </div>
-
-        <button class="w-full border border-gray-300 py-3 rounded-lg text-gray-700 font-semibold hover:bg-gray-50 transition">
-            Demo
-        </button>
-        </div>
-    </div>
-       
-    <section id="dashboard-container" class="hidden w-full absolute top-0 left-0">
-        <div class="navbar bg-white shadow-md px-6 py-4 w-full">
-            <div class="navbar-start">
-                <div class="flex items-center gap-2">
-                    <img src="./assets/github-logo.png" class="w-8 h-8" alt="Logo" />
-                    <span class="text-xl font-bold text-gray-800">GitHub Issues</span>
-                </div>
-            </div>
-            <div class="navbar-end gap-3">
-                <div class="hidden md:block">
-                    <input type="text" id="btn-search" placeholder="Search issues..." class="input input-bordered w-full max-w-xs" />
-                </div>
-                <button onclick="searchValues()" class="btn bg-purple-600 text-white hover:bg-purple-700 border-none px-6">
-                    Search Issue
-                </button>
-               
-            </div>
-        </div>
-        
-         
-        </div>
-
-
-
-
-
-<!-- card -->
-<div class="max-w-7xl mx-auto p-6">
- <button onclick="toggleBtn('allBtn'); CardLoad()" 
-id="allBtn"
-class="btn bg-indigo-600 text-white hover:bg-indigo-700 border-none px-8 rounded-lg">
-All
-</button>
-
-<button onclick="toggleBtn('openBtn'); openCardLoad('open')" 
-id="openBtn"
-class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">
-Open
-</button>
-
-<button onclick="toggleBtn('closeBtn'); openCardLoad('closed')" 
-id="closeBtn"
-class="btn bg-white text-gray-500 border-gray-200 hover:bg-gray-50 px-8 rounded-lg">
-Closed
-</button>
-
-    
+<
+<div class="flex flex-col gap-4 md:flex-row justify-between bg-white py-2 px-4 items-center">
+    <div class="flex gap-3">
+        <img src="./assets/Group.png" alt="">
+        <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
     </div>
 
-    <div class="border border-gray-200 rounded-2xl bg-white p-6 shadow-sm">
-        <div class="flex justify-between items-center mb-8">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center">
-                    <img src="./assets/Aperture.png" class="w-6 h-6" alt="">
-                </div>
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800"><span id="issues-no">50</span> Issues</h1>
-                    <p class="text-sm text-gray-400">Track and manage your project issues</p>
-                </div>
-            </div>
-            <div class="flex gap-4">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
-                    <span  class= "text-sm font-medium text-gray-600">Open</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-purple-500 rounded-full"></span>
-                    <span  class="text-sm font-medium text-gray-600">Closed</span>
-                </div>
-            </div>
+    <div class="flex gap-3">
+        <input id="search-issue" class="p-1 border rounded " type="text" placeholder="search issues">
+        <button id="search-issue-btn" class="btn btn-primary">Search</button>
+    </div>
+</div>
+
+
+<div class="flex justify-center">
+    <div class="bg-white p-4 shadow flex gap-2 mt-4 w-[80%] mb-5">
+
+        <button id="tabAll" class="btn" onclick="filterBtn('tabAll'); filterIssues('all')">All</button>
+        <button id="tabOpen" class="btn" onclick="filterBtn('tabOpen'); filterIssues('open')">Open</button>
+        <button id="tabClosed" class="btn" onclick="filterBtn('tabClosed');filterIssues('closed')">Closed</button>
+
+    </div>
+</div>
+
+
+<div class="flex justify-center">
+    <div class="bg-white p-4 shadow w-[80%] flex justify-between items-center mb-4">
+         <div>
+            <div class="flex items-center gap-3">
+            <span> <img src="./assets/Aperture.png" alt=""></span>
+            <p class="font-semibold">
+             <span id="issueCount">0</span> Issues
+            </p>
         </div>
-<!-- card parents -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="allContainer">
-           
+              <p class="ml-10 text-gray-500">Track and manage your project issue</p>
+         </div>
+
+        <div class="flex gap-4 text-sm">
+            <span class="text-red-600 font-semibold"><span class="h-[10px] w-[10px] rounded-full inline-block text-green-600 bg-green-600 mr-2"></span>  Open</span>
+            <span class="text-green-600 font-semibold"> <span class="h-[10px] w-[10px] rounded-full inline-block text-purple-600 bg-purple-600 mr-2"></span>Closed</span>
+        </div>
+
+    </div>
 </div>
 
 
 
+<section class="flex justify-center">
+
+<div id="issuesContainer"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-[80%]">
+
+</div>
+
+    <div id="spinner-container" class=" flex justify-center items-center py-30 hidden">
+                    <span class="loading loading-spinner loading-xl"></span>
+                </div>
+</section>
 
 
 
-
-    </section>
-
-
-
+            
+            <dialog id="modal_card" class="modal modal-middle">
+                <div id="modal_container" class="modal-box space-y-3 max-w-[clamp(20rem,90vw,43.75rem)]">
 
 
+                </div>
+            </dialog>
 
-    
-    <script src="script.js"></script>
+
+
+<script src="./script.js"></script>
+
 </body>
 </html>
-
